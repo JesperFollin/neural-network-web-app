@@ -224,7 +224,8 @@ class ClassificationNN():
 
 
 
-
+def test():
+    return "Hallå ja"
 
 # Implement custom train mehod
 

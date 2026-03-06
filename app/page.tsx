@@ -10,7 +10,7 @@ export default function Home() {
 
     try {
       // change back to "/api/run" when running in production
-      const res = await fetch("http://localhost:5000/api/run");
+      const res = await fetch("http://localhost:8080/api/run");
       const data = await res.json();
 
       setResult(JSON.stringify(data));

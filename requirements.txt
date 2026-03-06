@@ -1,4 +1,4 @@
 flask
 numpy
 keras
-flask_cors
+flask-cors
