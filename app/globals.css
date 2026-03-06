@@ -1,13 +1,13 @@
+
+
 :root {
+
   --background: #ffffff;
   --foreground: #171717;
-}
+  --text: var(--foreground);
+  --text-muted: #555555;
+  --border: #cccccc;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 html,
@@ -31,8 +31,12 @@ body {
 }
 
 a {
-  color: inherit;
+  color: blue;
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,3 +44,5 @@ a {
     color-scheme: dark;
   }
 }
+
+

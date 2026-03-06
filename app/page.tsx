@@ -1,38 +1,84 @@
 "use client";
 import { useState } from "react";
+import { Loader } from "./components/loader/loader";
+
+type ApiResponse = {
+  status: string;
+  accuracy: number;
+  timeElapsed: number;
+};
 
 export default function Home() {
-  const [result, setResult] = useState("");
+  const [response, setResponse] = useState<ApiResponse | null>(null);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function testAPI() {
     setLoading(true);
+    setError("");
 
     try {
       // change back to "/api/run" when running in production
       const res = await fetch("http://localhost:8080/api/run");
-      const data = await res.json();
 
-      setResult(JSON.stringify(data));
-    } catch (err) {
-      setResult("API request failed");
+      if (!res.ok) {
+        throw new Error(`Request failed with status ${res.status}`);
+      }
+
+      const data: ApiResponse = await res.json();
+      setResponse(data);
+    } catch {
+      setError("API request failed");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   }
 
   return (
     <main>
-      
-      <h1>Train and run model</h1>
+      <h1>Neural Network Demo</h1>
 
-      <p>This is a neural network in its simplest form. </p>
+      <p>
+        This demo demonstrates a small feed-forward neural network trained to
+        classify handwritten digits from the{" "}
+        <a href="https://www.tensorflow.org/datasets/catalog/mnist">MNIST</a>{" "}
+        dataset. Each 28x28 image is flattened into a vector and passed through
+        several fully connected layers with ReLU activations, followed by a
+        softmax output layer that produces probabilities for the digits 0-9.
+      </p>
 
-      <button onClick={testAPI}>Run Python API</button>
+      <p>
+        The network is trained using cross-entropy loss and mini-batch gradient
+        descent. During training, backpropagation computes how each weight
+        contributed to the error, allowing the model to update its parameters
+        and gradually improve its predictions.
+      </p>
 
-      {loading && <p>Running...</p>}
+      <p>
+        The entire implementation is written from scratch in NumPy to illustrate
+        the fundamental mechanics behind neural networks and to show that it is
+        possible to implement such models without relying on machine learning
+        frameworks.
+      </p>
 
-      {result && <pre>{result}</pre>}
+      <button onClick={testAPI} disabled={loading}>
+        Train model
+      </button>
+
+      {loading && <Loader />}
+
+      {error && <p>{error}</p>}
+
+      {response && (
+        <div>
+          <h5>Model finished training</h5>
+          {/* print accuracy with 2 decimals */}
+          <p>Accuracy: {(response.accuracy * 100).toFixed(2)}%</p>
+
+          {/* print time elapsed with 1 decimals */}
+          <p>Time elapsed: {response.timeElapsed.toFixed(1)} seconds</p>
+        </div>
+      )}
     </main>
   );
 }

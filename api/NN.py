@@ -2,6 +2,7 @@
 import numpy as np
 import pathlib
 import urllib.request
+import time
 
 def load_mnist_from_npz(cache_dir=None):
     """Load MNIST from the public .npz file without requiring keras/tensorflow."""
@@ -261,6 +262,8 @@ def train(model, X, Y, epochs, learning_rate, batch_size):
 # init data and use NN
 def run_model():
 
+    start_time = time.time()
+
     # load MNIST dataset
     (X_train, y_train), (X_test, y_test) = load_mnist_from_npz()
 
@@ -286,4 +289,7 @@ def run_model():
     Y_pred_test = model.predict(X_test_flat)
     accuracy = model.accuracy(Y_pred_test, Y_test)
 
-    return float(accuracy)
+    end_time = time.time()
+    time_elapsed = end_time - start_time
+
+    return float(accuracy), float(time_elapsed)
