@@ -292,4 +292,4 @@ def run_model():
     end_time = time.time()
     time_elapsed = end_time - start_time
 
-    print(float(accuracy), float(time_elapsed))
+    return(float(accuracy), float(time_elapsed))

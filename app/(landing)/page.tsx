@@ -42,45 +42,47 @@ export default function Home() {
     <main className={styles.mainContainer}>
       <h1 className={styles.title}>Neural Network Demo</h1>
 
-      <p className={styles.description}>
-        This demo demonstrates a small feed-forward neural network trained to
-        classify handwritten digits from the{" "}
-        <a href="https://www.tensorflow.org/datasets/catalog/mnist">MNIST</a>{" "}
-        dataset. Each 28x28 image is flattened into a vector and passed through
-        several fully connected layers with{" "}
-        <Tooltip title="ReLU" explanation={explanations.relu} /> activations,
-        followed by a
-        <Tooltip title="Softmax" explanation={explanations.softmax} /> output
-        layer that produces probabilities for the digits 0-9.
-      </p>
+      <div className={styles.descriptionContainer}>
+        <p className={styles.description}>
+          This demo demonstrates a small feed-forward neural network trained to
+          classify handwritten digits from the{" "}
+          <a href="https://www.tensorflow.org/datasets/catalog/mnist">MNIST</a>{" "}
+          dataset. Each 28x28 image is flattened into a vector and passed
+          through several fully connected layers with{" "}
+          <Tooltip title="ReLU" explanation={explanations.relu} /> activations,
+          followed by a{" "}
+          <Tooltip title="Softmax" explanation={explanations.softmax} /> output
+          layer that produces probabilities for the digits 0-9.
+        </p>
 
-      <p className={styles.description}>
-        The network is trained using{" "}
-        <Tooltip
-          title="cross-entropy"
-          explanation={explanations.cross_entropy}
-        />{" "}
-        loss and mini-batch{" "}
-        <Tooltip
-          title="gradient
+        <p className={styles.description}>
+          The network is trained using{" "}
+          <Tooltip
+            title="cross-entropy"
+            explanation={explanations.cross_entropy}
+          />{" "}
+          loss and mini-batch{" "}
+          <Tooltip
+            title="gradient
         descent"
-          explanation={explanations.gradient_descent}
-        />
-        . During training,{" "}
-        <Tooltip
-          title="backpropagation"
-          explanation={explanations.backpropagation}
-        />{" "}
-        computes how each weight contributed to the error, allowing the model to
-        update its parameters and gradually improve its predictions.
-      </p>
+            explanation={explanations.gradient_descent}
+          />
+          . During training,{" "}
+          <Tooltip
+            title="backpropagation"
+            explanation={explanations.backpropagation}
+          />{" "}
+          computes how each <Tooltip title="weight" explanation={explanations.weights} /> contributed to the error, allowing the model
+          to update its parameters and gradually improve its predictions.
+        </p>
 
-      <p className={styles.description}>
-        The entire implementation is written from scratch with NumPy to
-        illustrate the fundamental mechanics behind neural networks and to show
-        that it is possible to implement such models without relying on machine
-        learning frameworks.
-      </p>
+        <p className={styles.description}>
+          The entire implementation is written from scratch with NumPy to
+          illustrate the fundamental mechanics behind neural networks and to
+          show that it is possible to implement such models without relying on
+          machine learning frameworks.
+        </p>
+      </div>
 
       <Button
         onClick={testAPI}
@@ -96,7 +98,7 @@ export default function Home() {
 
       {response && (
         <div className={styles.responseContainer}>
-          <h5 className={styles.responseTitle}>Model finished training</h5>
+          <h3 className={styles.responseTitle}>Model finished</h3>
           <div className={styles.responseItem}>
             <p>Accuracy: {(response.accuracy * 100).toFixed(2)}%</p>
           </div>
