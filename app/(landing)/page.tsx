@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Loader } from "../../components/loader/loader";
 import { Tooltip } from "../../components/tooltip/tooltip";
 import { Button } from "../../components/button/button";
-import explanations from "./tooltip_explanations.json";
+import explanations from "./explanations.json";
 import styles from "./page.module.css";
+import { TrainSetCard } from "../../components/train-set-card/train-set-card";
 
 type ApiResponse = {
   status: string;
@@ -84,6 +85,13 @@ export default function Home() {
         </p>
       </div>
 
+      <div className={styles.trainSetContainer}>
+      <TrainSetCard title="MNIST" description={explanations.MNIST} />
+      <TrainSetCard title="EMNIST" description={explanations.EMNIST} />
+      <TrainSetCard title="Fashion-MNIST" description={explanations.Fashion_MNIST} />
+      <TrainSetCard title="KMNIST" description={explanations.KMNIST} />
+      </div>
+
       <Button
         onClick={testAPI}
         disabled={loading}
@@ -98,7 +106,7 @@ export default function Home() {
 
       {response && (
         <div className={styles.responseContainer}>
-          <h3 className={styles.responseTitle}>Model finished</h3>
+          <h4 className={styles.responseTitle}>Model Metrics</h4>
           <div className={styles.responseItem}>
             <p>Accuracy: {(response.accuracy * 100).toFixed(2)}%</p>
           </div>

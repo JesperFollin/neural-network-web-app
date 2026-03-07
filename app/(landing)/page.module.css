@@ -2,37 +2,60 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: min(960px, 100%);
+    margin: 0 auto;
+    padding: var(--size-7) var(--size-4) var(--size-8);
 }
 
 .title {
-    margin-top: 16px;
-    margin-bottom: 32px;
+    margin-top: var(--size-2);
+    margin-bottom: var(--size-5);
+    text-align: center;
+    color: var(--text);
 }
 
 .descriptionContainer{
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-bottom: 32px;
+    gap: var(--size-3);
+    width: 100%;
+    padding: var(--size-4);
+    margin-bottom: var(--size-7);
+    
 }
 
 .description {
     max-width: 800px;
+    line-height: 1.65;
+    color: var(--text-muted);
+}
+
+.trainSetContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--size-4);
 }
 
 .trainButton {
-    margin-bottom: 32px;
+    margin-bottom: var(--size-7);
 }
 
 .responseContainer {
-    
+    width: 100%;
+    max-width: 480px;
+    padding: var(--size-3) var(--size-4);
+    border: 1px solid var(--brand-2);
+    border-radius: var(--radius);
+    background: var(--brand-0);
 }
 
 .responseTitle {
-    margin-bottom: 16px;
+    margin-bottom: var(--size-3);
+    color: var(--brand-7);
 }
 
 .responseItem {
-    margin-bottom: 8px;
+    margin-bottom: var(--size-2);
+    color: var(--text);
 }
-

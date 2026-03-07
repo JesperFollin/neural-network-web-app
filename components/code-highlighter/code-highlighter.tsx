@@ -1,5 +1,6 @@
 import { codeToHtml } from "shiki";
 // import { dedent } from "ts-dedent";
+import styles from "./code-highlighter.module.css";
 
 async function highlightPython(code: string) {
   return await codeToHtml(code, {

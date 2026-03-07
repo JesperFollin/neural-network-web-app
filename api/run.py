@@ -15,3 +15,6 @@ def run_script():
         "accuracy": accuracy,
         "timeElapsed": timeElapsed
     })
+
+if __name__ == "__main__":
+    app.run(debug=True, port=8080)
