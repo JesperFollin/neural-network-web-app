@@ -92,7 +92,7 @@ export default function Home() {
         disabled={loading}
         className={styles.trainButton}
       >
-        Train model
+        {loading ? "Training..." : "Train Model"}
       </Button>
 
       {loading && <Loader />}
