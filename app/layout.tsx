@@ -17,7 +17,11 @@ export const metadata: Metadata = {
   title: "Learn Neural Networks",
   description: "Learn how neural networks work with and interactive demo and explanations in code.",
   icons: {
-    icon: "/logo.png",
+    icon: [
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png", // 180x180 for iOS
   },
 };
 
