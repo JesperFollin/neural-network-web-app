@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Learn Neural Networks",
   description: "Learn how neural networks work with and interactive demo and explanations in code.",
   icons: {
-    icon: "/logo.png",
+    icon: "/logo.svg",
   },
 };
 
