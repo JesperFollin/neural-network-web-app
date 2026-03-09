@@ -65,3 +65,9 @@
     color: var(--text-muted);
     font-weight: 600;
 }
+
+@media (max-width: 600px) {
+    .title {
+        font-size: var(--font-size-4);
+    }
+}

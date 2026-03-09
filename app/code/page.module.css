@@ -72,3 +72,10 @@
         flex-direction: column;
     }
 }
+
+@media (max-width: 600px) {
+    .title {
+        font-size: var(--font-size-4);
+        margin-top: -20px;
+    }
+}
